@@ -1,5 +1,7 @@
-- name: upgrade all packages, excluding kernel
-  yum:
-    name: '*'
-    state: latest
-    exclude: kernel*
+- hosts: all
+  tasks:
+    - name: upgrade all packages, excluding kernel
+      yum:
+        name: '*'
+        state: latest
+        exclude: kernel*
