@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: CentOS_7
   tasks:
     - name: upgrade all packages, excluding kernel
       yum:
