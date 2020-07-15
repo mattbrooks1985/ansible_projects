@@ -29,7 +29,8 @@
 	- name: Download Remi Repos
 	  shell: 
 		cmd: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && wget https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-      warn: false
+      args:
+        warn: no
 
     - name: Install Remi Repos
       yum:
