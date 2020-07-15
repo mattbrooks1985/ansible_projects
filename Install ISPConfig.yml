@@ -4,43 +4,43 @@
       yum:
         name: '*'
         state: latest
-		
+        
 	- name: Reboot machine to complete kernel update
 	  shell: "sleep 5 && reboot"
 	  async: 1
 	  poll: 0
-	  
+
 	- name: wait for 10 seconds
 	  pause:
 		seconds: 10
-		
-	- name: wait for the system to reboot
+
+    - name: wait for the system to reboot
 	  wait_for_connection:
 		connect_timeout: 20
 		sleep: 5
 		delay: 5
 		timeout: 60
-		
+
 	- name: Install wget
 	  yum:
 		name: 'wget'
 		state: latest
-		
+
 	- name: Download Remi Repos
 	  shell: 
 		cmd: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && wget https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-	
+
 	- name: Install Remi Repos
 	  command: rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
-	  
+
 	- name: Install yum-utils
 	  yum:
 		name: yum-utils
 		state: latest
-		
+
 	- name: Activate remi-php74 Repos
 	  command: yum-config-manager --enable remi-php74
-      
+
     - name: Install Remi PHP74
       yum:
         name: '*'
