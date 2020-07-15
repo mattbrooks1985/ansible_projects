@@ -26,14 +26,10 @@
         name: 'wget'
         state: latest
 
-    - name: Download Remi Repos
-      get_url: 
-         url: "{{ urls }}"
-         dest: /home/ansible
-      vars:
-        urls:
-        - "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
-        - "https://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+	- name: Download Remi Repos
+	  shell: 
+		cmd: wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && wget https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+      warm: false
 
     - name: Install Remi Repos
       yum:
