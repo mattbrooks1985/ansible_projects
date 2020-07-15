@@ -41,8 +41,14 @@
     - name: Activate remi-php74 Repos
       command: yum-config-manager --enable remi-php74
 
-    - name: Install Remi PHP74
+    - name: Update packages again
       yum:
         name: '*'
         state: latest
         exclude: kernel*
+
+    - name: Install Remi PHP 7.4
+      yum:
+        name: php74
+        state: latest
+        
